@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ป้าย QR หน้าร้าน | ปลาขาว โซล่าร์เซลล์</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #e8eae5; font-family: "Noto Sans Thai", sans-serif; }
+      .poster { width: 148mm; min-height: 210mm; padding: 14mm 12mm; display: flex; flex-direction: column; align-items: center; text-align: center; color: #171a17; background: #fff; box-shadow: 0 24px 60px rgba(23,26,23,.18); }
+      .brand-row { display: flex; align-items: center; gap: 10px; }
+      .brand-row img.shop { width: 56px; height: 56px; object-fit: contain; border: 1px solid #e3e6e0; border-radius: 12px; }
+      .brand-name { font-size: 17px; font-weight: 700; line-height: 1.4; text-align: left; }
+      .brand-name small { display: block; color: #70776f; font-size: 9px; font-weight: 600; letter-spacing: 1px; }
+      .dealer { margin-top: 10px; padding: 6px 14px; color: #0a5f43; border: 1px solid #b9dccd; border-radius: 999px; background: #e9f4ef; font-size: 11px; font-weight: 600; }
+      h1 { margin: 18px 0 4px; font-size: 30px; font-weight: 800; line-height: 1.35; }
+      h1 span { color: #0e7a55; }
+      .sub { margin: 0 0 16px; color: #70776f; font-size: 13px; line-height: 1.8; }
+      .qr-frame { padding: 10px; border: 2px solid #0e7a55; border-radius: 20px; background: #fff; }
+      .qr-frame img { width: 118mm; max-width: 100%; display: block; }
+      .url { margin: 12px 0 0; padding: 8px 14px; color: #0a5f43; border-radius: 8px; background: #e9f4ef; font-size: 11px; font-weight: 600; word-break: break-all; }
+      .steps { margin: 16px 0 0; padding: 0; display: grid; gap: 6px; color: #3d443d; font-size: 12px; line-height: 1.7; list-style: none; }
+      .steps li { display: flex; align-items: center; gap: 8px; }
+      .steps .num { width: 22px; height: 22px; display: grid; flex: 0 0 auto; place-items: center; color: #fff; border-radius: 50%; background: #0e7a55; font-size: 11px; font-weight: 700; }
+      .footer { margin-top: auto; padding-top: 14px; display: flex; align-items: center; justify-content: space-between; width: 100%; color: #70776f; font-size: 10px; }
+      .footer img { height: 34px; object-fit: contain; }
+      @media print {
+        body { background: #fff; }
+        .poster { box-shadow: none; }
+        @page { size: A5 portrait; margin: 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="poster">
+      <div class="brand-row">
+        <img class="shop" src="552065.jpg" alt="โลโก้ร้านปลาขาว โซล่าร์เซลล์" />
+        <div class="brand-name">
+          ห้างหุ้นส่วนจำกัด<br />ปลาขาว โซล่าร์เซลล์
+          <small>PLAKHAO SOLAR CELL LIMITED PARTNERSHIP</small>
+        </div>
+      </div>
+      <span class="dealer">ตัวแทนจำหน่าย Handuro อย่างเป็นทางการ</span>
+      <h1>สแกนเพื่อเลือกสินค้า<br /><span>และสั่งซื้อได้เลย</span></h1>
+      <p class="sub">เลือกสินค้า เห็นราคา สั่งซื้อผ่าน LINE<br />หรือบันทึกไว้สั่งภายหลัง — ไม่ต้องสมัครสมาชิก</p>
+      <div class="qr-frame"><img src="plakhao-qr.png" alt="QR code สำหรับเปิดเว็บแอปปลาขาว โซล่าร์เซลล์" /></div>
+      <p class="url">https://plakhaosolarcell.github.io/plakhao-solar-app/</p>
+      <ul class="steps">
+        <li><span class="num">1</span> เปิดกล้องมือถือสแกน QR code</li>
+        <li><span class="num">2</span> เลือกสินค้าที่สนใจ ระบบจำรายการไว้ให้อัตโนมัติ</li>
+        <li><span class="num">3</span> กดสั่งซื้อผ่าน LINE หรือดาวน์โหลด PDF เก็บไว้</li>
+      </ul>
+      <div class="footer">
+        <span>โทร. 080 527 8985</span>
+        <img src="logo handuro th.png" alt="Handuro Thailand" />
+      </div>
+    </div>
+  </body>
+</html>
