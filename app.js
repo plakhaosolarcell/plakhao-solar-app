@@ -58,6 +58,25 @@ const submersible4scModelOptions = submersible4scModels.querySelectorAll('input[
 const submersible4sscModels = document.querySelector("#submersible-4ssc-models");
 const submersible4sscModelOptions = submersible4sscModels.querySelectorAll('input[name="submersibleModel"]');
 const submersibleMotorOptions = interestForm.querySelectorAll('input[name="motor-submersible"]');
+const sumpMotorOptions = interestForm.querySelectorAll('input[name="motor-sump"]');
+const sumpAcDcModels = document.querySelector("#sump-acdc-models");
+const sumpAcDcModelOptions = sumpAcDcModels.querySelectorAll('input[name="sumpAcDcModel"]');
+const sumpDcModels = document.querySelector("#sump-dc-models");
+const sumpDcModelOptions = sumpDcModels.querySelectorAll('input[name="sumpDcModel"]');
+const sumpJ300wModels = document.querySelector("#sump-j300w-models");
+const sumpJ300wModelOptions = sumpJ300wModels.querySelectorAll('input[name="sumpJ300wModel"]');
+const sumpJ550wModels = document.querySelector("#sump-j550w-models");
+const sumpJ550wModelOptions = sumpJ550wModels.querySelectorAll('input[name="sumpJ550wModel"]');
+const sumpJ600wModels = document.querySelector("#sump-j600w-models");
+const sumpJ600wModelOptions = sumpJ600wModels.querySelectorAll('input[name="sumpJ600wModel"]');
+const sumpJ750wModels = document.querySelector("#sump-j750w-models");
+const sumpJ750wModelOptions = sumpJ750wModels.querySelectorAll('input[name="sumpJ750wModel"]');
+const sumpJ1100wModels = document.querySelector("#sump-j1100w-models");
+const sumpJ1100wModelOptions = sumpJ1100wModels.querySelectorAll('input[name="sumpJ1100wModel"]');
+const sumpJ1300wModels = document.querySelector("#sump-j1300w-models");
+const sumpJ1300wModelOptions = sumpJ1300wModels.querySelectorAll('input[name="sumpJ1300wModel"]');
+const sumpJ1500wModels = document.querySelector("#sump-j1500w-models");
+const sumpJ1500wModelOptions = sumpJ1500wModels.querySelectorAll('input[name="sumpJ1500wModel"]');
 const onGridDetailsWrap = document.querySelector("#ongrid-details-wrap");
 const onGridPhaseOptions = interestForm.querySelectorAll('input[name="ongridPhase"]');
 const onGridWattWrap = document.querySelector("#ongrid-watt-wrap");
@@ -159,6 +178,9 @@ centrifugalMotorOptions.forEach((input) => {
 centrifugalAcDcWattOptions.forEach((input) => input.addEventListener("change", updateCentrifugalAcDcWattOptions));
 centrifugalDcWattOptions.forEach((input) => input.addEventListener("change", updateCentrifugalDcWattOptions));
 submersibleMotorOptions.forEach((input) => input.addEventListener("change", updateSubmersibleSizeOptions));
+sumpMotorOptions.forEach((input) => input.addEventListener("change", updateSumpDcModels));
+sumpMotorOptions.forEach((input) => input.addEventListener("change", updateSumpAcDcModels));
+sumpDcModelOptions.forEach((input) => input.addEventListener("change", updateSumpDcModels));
 submersibleSizeOptions.forEach((input) => input.addEventListener("change", updateSubmersibleModel));
 submersible2scModelOption.addEventListener("change", updateSubmersibleModel);
 submersible3scModelOptions.forEach((input) => input.addEventListener("change", updateSubmersibleModel));
@@ -179,6 +201,72 @@ function updatePumpMotorOptions() {
   updateSubmersibleSizeOptions();
   updateCentrifugalAcDcWattOptions();
   updateCentrifugalDcWattOptions();
+  updateSumpDcModels();
+  updateSumpAcDcModels();
+}
+
+function updateSumpAcDcModels() {
+  const sumpSelected = interestForm.querySelector('input[name="pumpType"][value="ปั๊มจุ่ม"]').checked;
+  const acDcSelected = interestForm.querySelector('input[name="motor-sump"][value="สองระบบ AC/DC"]').checked;
+  const showModels = pumpInterest.checked && sumpSelected && acDcSelected;
+  sumpAcDcModels.hidden = !showModels;
+  sumpAcDcModelOptions.forEach((input) => {
+    input.required = showModels;
+    if (!showModels) input.checked = false;
+  });
+}
+
+function updateSumpDcModels() {
+  const sumpSelected = interestForm.querySelector('input[name="pumpType"][value="ปั๊มจุ่ม"]').checked;
+  const dcBrushlessSelected = interestForm.querySelector('input[name="motor-sump"][value="DC Brushless"]').checked;
+  const showModels = pumpInterest.checked && sumpSelected && dcBrushlessSelected;
+  sumpDcModels.hidden = !showModels;
+  sumpDcModelOptions.forEach((input) => {
+    input.required = showModels;
+    if (!showModels) input.checked = false;
+  });
+  const j300wSelected = showModels && sumpDcModels.querySelector('input[name="sumpDcModel"]:checked')?.value === "J-300W";
+  sumpJ300wModels.hidden = !j300wSelected;
+  sumpJ300wModelOptions.forEach((input) => {
+    input.required = j300wSelected;
+    if (!j300wSelected) input.checked = false;
+  });
+  const j550wSelected = showModels && sumpDcModels.querySelector('input[name="sumpDcModel"]:checked')?.value === "J-550W";
+  sumpJ550wModels.hidden = !j550wSelected;
+  sumpJ550wModelOptions.forEach((input) => {
+    input.required = j550wSelected;
+    if (!j550wSelected) input.checked = false;
+  });
+  const j600wSelected = showModels && sumpDcModels.querySelector('input[name="sumpDcModel"]:checked')?.value === "J-600W";
+  sumpJ600wModels.hidden = !j600wSelected;
+  sumpJ600wModelOptions.forEach((input) => {
+    input.required = j600wSelected;
+    if (!j600wSelected) input.checked = false;
+  });
+  const j750wSelected = showModels && sumpDcModels.querySelector('input[name="sumpDcModel"]:checked')?.value === "J-750W";
+  sumpJ750wModels.hidden = !j750wSelected;
+  sumpJ750wModelOptions.forEach((input) => {
+    input.required = j750wSelected;
+    if (!j750wSelected) input.checked = false;
+  });
+  const j1100wSelected = showModels && sumpDcModels.querySelector('input[name="sumpDcModel"]:checked')?.value === "J-1100W";
+  sumpJ1100wModels.hidden = !j1100wSelected;
+  sumpJ1100wModelOptions.forEach((input) => {
+    input.required = j1100wSelected;
+    if (!j1100wSelected) input.checked = false;
+  });
+  const j1300wSelected = showModels && sumpDcModels.querySelector('input[name="sumpDcModel"]:checked')?.value === "J-1300W";
+  sumpJ1300wModels.hidden = !j1300wSelected;
+  sumpJ1300wModelOptions.forEach((input) => {
+    input.required = j1300wSelected;
+    if (!j1300wSelected) input.checked = false;
+  });
+  const j1500wSelected = showModels && sumpDcModels.querySelector('input[name="sumpDcModel"]:checked')?.value === "J-1500W";
+  sumpJ1500wModels.hidden = !j1500wSelected;
+  sumpJ1500wModelOptions.forEach((input) => {
+    input.required = j1500wSelected;
+    if (!j1500wSelected) input.checked = false;
+  });
 }
 
 function updateCentrifugalAcDcWattOptions() {
@@ -670,9 +758,83 @@ interestForm.addEventListener("submit", (event) => {
       submersible4sscModelOptions[0].focus();
       return;
     }
+    const sumpPump = selectedPumpTypes.find(({ name }) => name === "ปั๊มจุ่ม");
+    const selectedSumpMotor = sumpPump?.motorGroup.querySelector('input[name="motor-sump"]:checked');
+    if (selectedSumpMotor?.value === "DC Brushless" && !sumpDcModels.querySelector('input[name="sumpDcModel"]:checked')) {
+      selectionSummary.textContent = "กรุณาเลือกรุ่นปั๊มจุ่ม DC Brushless";
+      sumpDcModelOptions[0].focus();
+      return;
+    }
+    if (selectedSumpMotor?.value === "DC Brushless" && interestForm.querySelector('input[name="sumpDcModel"]:checked')?.value === "J-300W" && !sumpJ300wModels.querySelector('input[name="sumpJ300wModel"]:checked')) {
+      selectionSummary.textContent = "กรุณาเลือกรุ่นปั๊มจุ่ม J-300W";
+      sumpJ300wModelOptions[0].focus();
+      return;
+    }
+    if (selectedSumpMotor?.value === "DC Brushless" && interestForm.querySelector('input[name="sumpDcModel"]:checked')?.value === "J-550W" && !sumpJ550wModels.querySelector('input[name="sumpJ550wModel"]:checked')) {
+      selectionSummary.textContent = "กรุณาเลือกรุ่นปั๊มจุ่ม J-550W";
+      sumpJ550wModelOptions[0].focus();
+      return;
+    }
+    if (selectedSumpMotor?.value === "DC Brushless" && interestForm.querySelector('input[name="sumpDcModel"]:checked')?.value === "J-600W" && !sumpJ600wModels.querySelector('input[name="sumpJ600wModel"]:checked')) {
+      selectionSummary.textContent = "กรุณาเลือกรุ่นปั๊มจุ่ม J-600W";
+      sumpJ600wModelOptions[0].focus();
+      return;
+    }
+    if (selectedSumpMotor?.value === "DC Brushless" && interestForm.querySelector('input[name="sumpDcModel"]:checked')?.value === "J-750W" && !sumpJ750wModels.querySelector('input[name="sumpJ750wModel"]:checked')) {
+      selectionSummary.textContent = "กรุณาเลือกรุ่นปั๊มจุ่ม J-750W";
+      sumpJ750wModelOptions[0].focus();
+      return;
+    }
+    if (selectedSumpMotor?.value === "DC Brushless" && interestForm.querySelector('input[name="sumpDcModel"]:checked')?.value === "J-1100W" && !sumpJ1100wModels.querySelector('input[name="sumpJ1100wModel"]:checked')) {
+      selectionSummary.textContent = "กรุณาเลือกรุ่นปั๊มจุ่ม J-1100W";
+      sumpJ1100wModelOptions[0].focus();
+      return;
+    }
+    if (selectedSumpMotor?.value === "DC Brushless" && interestForm.querySelector('input[name="sumpDcModel"]:checked')?.value === "J-1300W" && !sumpJ1300wModels.querySelector('input[name="sumpJ1300wModel"]:checked')) {
+      selectionSummary.textContent = "กรุณาเลือกรุ่นปั๊มจุ่ม J-1300W";
+      sumpJ1300wModelOptions[0].focus();
+      return;
+    }
+    if (selectedSumpMotor?.value === "DC Brushless" && interestForm.querySelector('input[name="sumpDcModel"]:checked')?.value === "J-1500W" && !sumpJ1500wModels.querySelector('input[name="sumpJ1500wModel"]:checked')) {
+      selectionSummary.textContent = "กรุณาเลือกรุ่นปั๊มจุ่ม J-1500W";
+      sumpJ1500wModelOptions[0].focus();
+      return;
+    }
+    if (selectedSumpMotor?.value === "สองระบบ AC/DC" && !sumpAcDcModels.querySelector('input[name="sumpAcDcModel"]:checked')) {
+      selectionSummary.textContent = "กรุณาเลือกรุ่นปั๊มจุ่ม สองระบบ AC/DC";
+      sumpAcDcModelOptions[0].focus();
+      return;
+    }
     const pumpIndex = selectedInterests.indexOf("โซล่าร์ปั๊มน้ำ");
     const pumpSummary = selectedPumpTypes.map(({ name, motorGroup }) => {
       const selectedMotor = motorGroup.querySelector('input[type="radio"]:checked');
+      const selectedSumpModel = name === "ปั๊มจุ่ม" && selectedMotor.value === "DC Brushless"
+        ? sumpDcModels.querySelector('input[name="sumpDcModel"]:checked')
+        : null;
+      const selectedSumpAcDcModel = name === "ปั๊มจุ่ม" && selectedMotor.value === "สองระบบ AC/DC"
+        ? sumpAcDcModels.querySelector('input[name="sumpAcDcModel"]:checked')
+        : null;
+      const selectedSumpJ300wModel = selectedSumpModel?.value === "J-300W"
+        ? sumpJ300wModels.querySelector('input[name="sumpJ300wModel"]:checked')
+        : null;
+      const selectedSumpJ550wModel = selectedSumpModel?.value === "J-550W"
+        ? sumpJ550wModels.querySelector('input[name="sumpJ550wModel"]:checked')
+        : null;
+      const selectedSumpJ600wModel = selectedSumpModel?.value === "J-600W"
+        ? sumpJ600wModels.querySelector('input[name="sumpJ600wModel"]:checked')
+        : null;
+      const selectedSumpJ750wModel = selectedSumpModel?.value === "J-750W"
+        ? sumpJ750wModels.querySelector('input[name="sumpJ750wModel"]:checked')
+        : null;
+      const selectedSumpJ1100wModel = selectedSumpModel?.value === "J-1100W"
+        ? sumpJ1100wModels.querySelector('input[name="sumpJ1100wModel"]:checked')
+        : null;
+      const selectedSumpJ1300wModel = selectedSumpModel?.value === "J-1300W"
+        ? sumpJ1300wModels.querySelector('input[name="sumpJ1300wModel"]:checked')
+        : null;
+      const selectedSumpJ1500wModel = selectedSumpModel?.value === "J-1500W"
+        ? sumpJ1500wModels.querySelector('input[name="sumpJ1500wModel"]:checked')
+        : null;
       const selectedSize = name === "ปั๊มซับเมอร์ส" && selectedMotor.value === "DC Brushless"
         ? interestForm.querySelector('input[name="submersibleSize"]:checked')
         : null;
@@ -767,15 +929,90 @@ interestForm.addEventListener("submit", (event) => {
             "รับประกัน 1 ปี",
           ].filter(Boolean).join(", ")}`
         : "";
+      const sumpJ300wModelDetails = selectedSumpJ300wModel
+        ? `, ${[
+            selectedSumpJ300wModel.value,
+            selectedSumpJ300wModel.dataset.outlet,
+            selectedSumpJ300wModel.dataset.variant,
+            `${Number(selectedSumpJ300wModel.dataset.price).toLocaleString("th-TH")} บาท`,
+            `รับประกัน ${selectedSumpJ300wModel.dataset.warranty}`,
+          ].filter(Boolean).join(", ")}`
+        : "";
+      const sumpJ550wModelDetails = selectedSumpJ550wModel
+        ? `, ${[
+            selectedSumpJ550wModel.value,
+            selectedSumpJ550wModel.dataset.outlet,
+            selectedSumpJ550wModel.dataset.variant,
+            `${Number(selectedSumpJ550wModel.dataset.price).toLocaleString("th-TH")} บาท`,
+            `รับประกัน ${selectedSumpJ550wModel.dataset.warranty}`,
+          ].filter(Boolean).join(", ")}`
+        : "";
+      const sumpJ600wModelDetails = selectedSumpJ600wModel
+        ? `, ${[
+            selectedSumpJ600wModel.value,
+            selectedSumpJ600wModel.dataset.outlet,
+            selectedSumpJ600wModel.dataset.variant,
+            `${Number(selectedSumpJ600wModel.dataset.price).toLocaleString("th-TH")} บาท`,
+            `รับประกัน ${selectedSumpJ600wModel.dataset.warranty}`,
+          ].filter(Boolean).join(", ")}`
+        : "";
+      const sumpJ750wModelDetails = selectedSumpJ750wModel
+        ? `, ${[
+            selectedSumpJ750wModel.dataset.model,
+            selectedSumpJ750wModel.dataset.outlet,
+            selectedSumpJ750wModel.dataset.variant,
+            `${Number(selectedSumpJ750wModel.dataset.price).toLocaleString("th-TH")} บาท`,
+            `รับประกัน ${selectedSumpJ750wModel.dataset.warranty}`,
+          ].filter(Boolean).join(", ")}`
+        : "";
+      const sumpJ1100wModelDetails = selectedSumpJ1100wModel
+        ? `, ${[
+            selectedSumpJ1100wModel.value,
+            selectedSumpJ1100wModel.dataset.outlet,
+            selectedSumpJ1100wModel.dataset.variant,
+            `${Number(selectedSumpJ1100wModel.dataset.price).toLocaleString("th-TH")} บาท`,
+            `รับประกัน ${selectedSumpJ1100wModel.dataset.warranty}`,
+          ].filter(Boolean).join(", ")}`
+        : "";
+      const sumpJ1300wModelDetails = selectedSumpJ1300wModel
+        ? `, ${[
+            selectedSumpJ1300wModel.value,
+            selectedSumpJ1300wModel.dataset.outlet,
+            selectedSumpJ1300wModel.dataset.variant,
+            `${Number(selectedSumpJ1300wModel.dataset.price).toLocaleString("th-TH")} บาท`,
+            `รับประกัน ${selectedSumpJ1300wModel.dataset.warranty}`,
+          ].filter(Boolean).join(", ")}`
+        : "";
+      const sumpJ1500wModelDetails = selectedSumpJ1500wModel
+        ? `, ${[
+            selectedSumpJ1500wModel.value,
+            selectedSumpJ1500wModel.dataset.outlet,
+            selectedSumpJ1500wModel.dataset.variant,
+            `${Number(selectedSumpJ1500wModel.dataset.price).toLocaleString("th-TH")} บาท`,
+            `รับประกัน ${selectedSumpJ1500wModel.dataset.warranty}`,
+          ].filter(Boolean).join(", ")}`
+        : "";
+      const sumpAcDcModelDetails = selectedSumpAcDcModel
+        ? [
+            selectedSumpAcDcModel.value,
+            selectedSumpAcDcModel.dataset.outlet,
+            `${Number(selectedSumpAcDcModel.dataset.price).toLocaleString("th-TH")} บาท`,
+            `รับประกัน ${selectedSumpAcDcModel.dataset.warranty}`,
+          ].filter(Boolean).join(", ")
+        : "";
       const pumpVariant = selectedSize
         ? ` (${selectedSize.value}${modelDetails})`
         : selectedAcDcSeries
           ? ` (${selectedAcDcSeries.value}${acDcModelDetails})`
-          : selectedCentrifugalWatt
-            ? ` (${selectedCentrifugalWatt.value}${centrifugalDcModelDetails})`
-            : selectedCentrifugalAcDcWatt
+          : selectedSumpAcDcModel
+            ? ` (${sumpAcDcModelDetails})`
+          : selectedSumpModel
+            ? ` (${selectedSumpModel.value}${sumpJ300wModelDetails}${sumpJ550wModelDetails}${sumpJ600wModelDetails}${sumpJ750wModelDetails}${sumpJ1100wModelDetails}${sumpJ1300wModelDetails}${sumpJ1500wModelDetails})`
+            : selectedCentrifugalWatt
+              ? ` (${selectedCentrifugalWatt.value}${centrifugalDcModelDetails})`
+              : selectedCentrifugalAcDcWatt
                 ? ` (${selectedCentrifugalAcDcWatt.value}${centrifugalAcDcModelDetails})`
-          : "";
+                : "";
       return `${name}: ${selectedMotor.value}${pumpVariant}`;
     });
     selectedInterests[pumpIndex] = `โซล่าร์ปั๊มน้ำ (${pumpSummary.join(", ")})`;

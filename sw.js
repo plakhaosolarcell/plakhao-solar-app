@@ -1,4 +1,4 @@
-const CACHE_NAME = "plakhao-solar-v1";
+const CACHE_NAME = "plakhao-solar-v2";
 const APP_SHELL = [
   "./",
   "./index.html",

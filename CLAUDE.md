@@ -31,6 +31,7 @@ Each model group is wired by hand in several places, so a new group needs all of
 5. A branch in the nested ternary that resolves `selectedModel` / `selectedAcDcModel`.
 
 Quirk: the 2SC model's price ("5,500 บาท") is hard-coded in `app.js` rather than read from `data-price`.
+The DC Brushless models for ปั๊มจุ่ม are J-300W, J-550W, J-600W, J-750W, J-1100W, J-1300W and J-1500W. J-300W has the model HD-SQD7.5-14-24-300W (Outlet 1.5", BL built-in control), priced at 4,500 baht with a 1-year warranty. J-550W has the model HD-SQD7-18-48-550W (Outlet 1", BL), priced at 6,000 baht with a 1-year warranty. J-600W has the model HD-SQD16-21-48-600W (Outlet 2", BL built-in control), priced at 4,800 baht with a 1-year warranty. J-750W offers HD-SQD17-27-72-750W in BL (7,000 baht) or BL built-in control (5,000 baht), both with a 1-year warranty. J-1100W has the model HD-SQD40-10-110-1100W (Outlet 3", BL built-in control), priced at 6,000 baht with a 1-year warranty. J-1300W has the model HD-SQD83-11-110-1300 (4", Controller with fan), priced at 8,000 baht with a 1-year warranty. J-1500W offers HD-SQD45-19-110-1500W (Outlet 3", BL) at 7,500 baht and HD-SQD100-9-110-1500 (6", Controller with fan) at 8,500 baht, both with a 1-year warranty. The two-system AC/DC sump pump has the model HD-SQD100-9-180-1500-A/D (6"), priced at 10,500 baht with a 1-year warranty.
 
 ## Assets
 
